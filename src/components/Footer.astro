@@ -1,0 +1,17 @@
+---
+import site from "../data/site.json";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p class="brand">{site.title}</p>
+  <ul class="footer-links">
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#biografia">Biografía</a></li>
+    <li><a href="#repertorio">Repertorio</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <small>© {year} {site.title} · {site.city}</small>
+</footer>

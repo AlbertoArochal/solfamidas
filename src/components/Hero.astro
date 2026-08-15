@@ -1,11 +1,13 @@
 ---
-interface SiteInfo {
-  title: string;
-  instrument: string;
-  description: string;
+interface Props {
+  site: {
+    title: string;
+    instrument: string;
+    description: string;
+  };
 }
 
-const { site } = Astro.props as { site: SiteInfo };
+const { site } = Astro.props;
 ---
 
 <section id="hero" class="section hero">

@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Bio from "../components/Bio.astro";
+import Repertorio from "../components/Repertorio.astro";
+import Events from "../components/Events.astro";
+import Gallery from "../components/Gallery.astro";
+import AudioPlayer from "../components/AudioPlayer.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import site from "../data/site.json";
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero site={site} />
+    <Bio />
+    <Repertorio />
+    <Events />
+    <Gallery />
+    <AudioPlayer />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

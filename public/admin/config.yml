@@ -11,7 +11,7 @@ collections:
   - name: "config"
     label: "Configuración General"
     files:
-      - file: "src/content/site.json"
+      - file: "src/data/site.json"
         label: "Datos del Músico y SEO"
         name: "site_info"
         fields:

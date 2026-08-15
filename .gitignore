@@ -13,6 +13,7 @@ dist/
 .astro/
 coverage/
 *.tsbuildinfo
+.vercel/
 
 # Logs
 npm-debug.log*

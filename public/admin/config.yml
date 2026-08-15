@@ -4,6 +4,8 @@ backend:
   repo: AlbertoArochal/solfamidas
   base_url: https://solfamidas.vercel.app
   auth_endpoint: oauth
+  site_domain: solfamidas.vercel.app
+  site_id: solfamidas
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

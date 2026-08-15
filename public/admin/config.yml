@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
   branch: main
-
-local_backend: true
+  repo: AlbertoArochal/solfamidas
+  base_url: https://solfamidas.vercel.app
+  auth_endpoint: oauth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

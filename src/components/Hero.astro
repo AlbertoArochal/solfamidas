@@ -1,0 +1,18 @@
+---
+interface SiteInfo {
+  title: string;
+  instrument: string;
+  description: string;
+}
+
+const { site } = Astro.props as { site: SiteInfo };
+---
+
+<section id="hero" class="section hero">
+  <div class="container">
+    <p class="eyebrow">{site.instrument}</p>
+    <h1>{site.title}</h1>
+    <p class="lead">{site.description}</p>
+    <a class="button" href="#contacto">Reservar fecha</a>
+  </div>
+</section>

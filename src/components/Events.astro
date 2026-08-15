@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+const eventos = (await getCollection("eventos")).sort(
+  (a, b) => a.data.date.getTime() - b.data.date.getTime(),
+);
+
+const fmt = new Intl.DateTimeFormat("es-ES", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+---
+
+<section id="agenda" class="section">
+  <div class="container">
+    <h2>Agenda</h2>
+    {
+      eventos.length === 0 ? (
+        <p>Próximamente anunciaremos nuevas fechas.</p>
+      ) : (
+        <ul class="events-list">
+          {eventos.map((evento) => (
+            <li>
+              <p class="event-date">{fmt.format(evento.data.date)}</p>
+              <h3>{evento.data.title}</h3>
+              <p>
+                {evento.data.location} · {evento.data.city}
+              </p>
+              <p class="event-type">{evento.data.type}</p>
+              {evento.data.link && (
+                <a href={evento.data.link} rel="noopener noreferrer" target="_blank">
+                  Entradas / información
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>

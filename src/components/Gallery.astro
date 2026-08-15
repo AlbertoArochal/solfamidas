@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+const items = await getCollection("galeria");
+---
+
+<section id="multimedia" class="section section-muted">
+  <div class="container">
+    <h2>Galería</h2>
+    {
+      items.length === 0 ? (
+        <p>Agrega imágenes desde el panel /admin para completar esta sección.</p>
+      ) : (
+        <div class="gallery-grid">
+          {items.map((item) => (
+            <figure>
+              <img src={item.data.image} alt={item.data.title} loading="lazy" />
+              <figcaption>
+                {item.data.title} · {item.data.category}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "config"
+    label: "Configuración General"
+    files:
+      - file: "src/content/site.json"
+        label: "Datos del Músico y SEO"
+        name: "site_info"
+        fields:
+          - { label: "Nombre / Agrupación", name: "title", widget: "string" }
+          - { label: "Especialidad", name: "instrument", widget: "string" }
+          - { label: "Descripción Corta (SEO)", name: "description", widget: "text" }
+          - { label: "Email de Contacto", name: "email", widget: "string" }
+          - { label: "Teléfono / WhatsApp", name: "phone", widget: "string" }
+          - { label: "Ciudad Principal", name: "city", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string", required: false }
+
+  - name: "eventos"
+    label: "Agenda y Eventos"
+    folder: "src/content/eventos"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título del Concierto / Evento", name: "title", widget: "string" }
+      - { label: "Fecha y Hora", name: "date", widget: "datetime" }
+      - { label: "Ubicación / Sala", name: "location", widget: "string" }
+      - { label: "Ciudad", name: "city", widget: "string" }
+      - { label: "Tipo", name: "type", widget: "select", options: ["Recital Solo", "Boda / Gala", "Música de Cámara", "Evento Privado"] }
+      - { label: "Enlace Entradas / Info", name: "link", widget: "string", required: false }
+
+  - name: "galeria"
+    label: "Galería de Fotos"
+    folder: "src/content/galeria"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título / Descripción", name: "title", widget: "string" }
+      - { label: "Imagen", name: "image", widget: "image" }
+      - { label: "Categoría", name: "category", widget: "select", options: ["Conciertos", "Bodas", "Sesión Editorial", "Detrás de Escena"] }

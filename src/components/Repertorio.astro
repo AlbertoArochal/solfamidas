@@ -1,13 +1,15 @@
+---
+import site from "../data/site.json";
+---
+
 <section id="repertorio" class="section section-muted">
   <div class="container">
-    <h2>Repertorio</h2>
-    <p>
-      Selección adaptable según formato: recital clásico, ceremonia, cóctel o gala privada.
-    </p>
+    <h2>{site.repertorioTitle}</h2>
+    <p>{site.repertorioIntro}</p>
     <ul class="repertoire-list">
-      <li>Sonatas para violín y piano (Beethoven, Brahms)</li>
-      <li>Piezas líricas para ceremonia (Massenet, Elgar, Fauré)</li>
-      <li>Música de cámara para eventos boutique</li>
+      {site.repertorio.map((item) => (
+        <li>{item}</li>
+      ))}
     </ul>
   </div>
 </section>

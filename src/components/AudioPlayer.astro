@@ -1,9 +1,69 @@
-<section class="section">
+---
+import { getCollection } from "astro:content";
+
+const mediaItems = await getCollection("media");
+
+function embedUrl(type: string, url: string): string | null {
+  switch (type) {
+    case "youtube": {
+      // Admite youtu.be/ID, youtube.com/watch?v=ID, youtube.com/embed/ID
+      const m = url.match(
+        /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/,
+      );
+      return m ? `https://www.youtube.com/embed/${m[1]}` : null;
+    }
+    case "vimeo": {
+      const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+      return m ? `https://player.vimeo.com/video/${m[1]}` : null;
+    }
+    case "soundcloud":
+      return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}`;
+    case "spotify":
+      return `https://open.spotify.com/embed/track/${url.split("/track/")[1] ?? ""}`;
+    default:
+      return null;
+  }
+}
+---
+
+<section id="multimedia" class="section">
   <div class="container">
-    <h2>Audio / Video</h2>
-    <p>Puedes incrustar un reproductor de SoundCloud, Spotify o YouTube en este bloque.</p>
-    <div class="embed-placeholder">
-      <p>Embed pendiente (editable en próximo paso del MVP).</p>
-    </div>
+    <h2>Multimedia</h2>
+    {
+      mediaItems.length === 0 ? (
+        <div class="embed-placeholder">
+          <p>Agrega vídeos o audios desde el panel /admin para completar esta sección.</p>
+        </div>
+      ) : (
+        <div class="media-grid">
+          {
+            mediaItems.map((item) => {
+              const src = embedUrl(item.data.type, item.data.url);
+              return (
+                <figure class="media-item">
+                  <div class="embed-frame">
+                    {
+                      src ? (
+                        <iframe
+                          src={src}
+                          title={item.data.title}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen
+                        ></iframe>
+                      ) : (
+                        <p class="embed-invalid">URL no reconocida para {item.data.type}. Revisa el enlace en /admin.</p>
+                      )
+                    }
+                  </div>
+                  <figcaption>{item.data.title}</figcaption>
+                  {item.data.description && <p class="media-desc">{item.data.description}</p>}
+                </figure>
+              );
+            })
+          }
+        </div>
+      )
+    }
   </div>
 </section>

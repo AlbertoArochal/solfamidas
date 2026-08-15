@@ -1,10 +1,13 @@
 ---
-import BioContent from "../data/bio.md";
+import { getCollection } from "astro:content";
+
+const [bio] = await getCollection("bio");
+const { Content } = await bio.render();
 ---
 
 <section id="biografia" class="section">
   <div class="container prose">
-    <h2>Biografía</h2>
-    <BioContent />
+    <h2>{bio.data.title}</h2>
+    <Content />
   </div>
 </section>

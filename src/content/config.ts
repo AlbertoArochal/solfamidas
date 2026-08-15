@@ -31,4 +31,22 @@ const galeria = defineCollection({
   }),
 });
 
-export const collections = { eventos, galeria };
+const media = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    type: z.enum(["youtube", "soundcloud", "spotify", "vimeo"]),
+    /** URL de la página del embed (YouTube/SoundCloud/Spotify/Vimeo) */
+    url: z.string().url(),
+    description: z.string().optional(),
+  }),
+});
+
+const bio = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string().default("Biografía"),
+  }),
+});
+
+export const collections = { eventos, galeria, media, bio };

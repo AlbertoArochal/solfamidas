@@ -5,5 +5,13 @@
   "email": "booking@duoharmonie.com",
   "phone": "+34 600 000 000",
   "city": "Barcelona",
-  "instagram": "https://instagram.com/duoharmonie"
+  "instagram": "https://instagram.com/duoharmonie",
+  "contactIntro": "Reserva tu fecha o solicita un presupuesto personalizado para tu recital, boda o evento privado.",
+  "repertorioTitle": "Repertorio",
+  "repertorioIntro": "Selección adaptable según formato: recital clásico, ceremonia, cóctel o gala privada.",
+  "repertorio": [
+    "Sonatas para violín y piano (Beethoven, Brahms)",
+    "Piezas líricas para ceremonia (Massenet, Elgar, Fauré)",
+    "Música de cámara para eventos boutique"
+  ]
 }

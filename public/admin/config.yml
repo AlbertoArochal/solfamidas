@@ -22,6 +22,7 @@ collections:
           - { label: "Teléfono / WhatsApp", name: "phone", widget: "string" }
           - { label: "Ciudad Principal", name: "city", widget: "string" }
           - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "Texto de Contacto", name: "contactIntro", widget: "text" }
 
   - name: "eventos"
     label: "Agenda y Eventos"
@@ -45,3 +46,45 @@ collections:
       - { label: "Título / Descripción", name: "title", widget: "string" }
       - { label: "Imagen", name: "image", widget: "image" }
       - { label: "Categoría", name: "category", widget: "select", options: ["Conciertos", "Bodas", "Sesión Editorial", "Detrás de Escena"] }
+
+  - name: "media"
+    label: "Multimedia (Audio / Video)"
+    folder: "src/content/media"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - {
+          label: "Tipo de Embed",
+          name: "type",
+          widget: "select",
+          options:
+            [
+              { label: "YouTube", value: "youtube" },
+              { label: "SoundCloud", value: "soundcloud" },
+              { label: "Spotify", value: "spotify" },
+              { label: "Vimeo", value: "vimeo" },
+            ],
+        }
+      - { label: "URL del contenido", name: "url", widget: "string", hint: "Pega el enlace del vídeo o pista (YouTube, SoundCloud, Spotify o Vimeo)" }
+      - { label: "Descripción (opcional)", name: "description", widget: "text", required: false }
+
+  - name: "bio"
+    label: "Biografía"
+    folder: "src/content/bio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "repertorio"
+    label: "Repertorio"
+    files:
+      - file: "src/data/site.json"
+        label: "Lista de Repertorio"
+        name: "repertorio_items"
+        fields:
+          - { label: "Título de la Sección", name: "repertorioTitle", widget: "string" }
+          - { label: "Texto Introductorio", name: "repertorioIntro", widget: "text" }
+          - { label: "Piezas / Programas", name: "repertorio", widget: "list", fields: [{ label: "Pieza", name: "item", widget: "string" }] }

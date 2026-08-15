@@ -286,6 +286,58 @@ a:hover {
 }
 
 /* Multimedia / embeds */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.media-item {
+  margin: 0;
+}
+
+.embed-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0f0d0b;
+  border: 1px solid rgba(169, 126, 47, 0.35);
+}
+
+.embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.media-item figcaption {
+  font-family: var(--font-display);
+  text-align: center;
+  margin-top: 0.75rem;
+  color: var(--color-ink);
+}
+
+.media-desc {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+  margin: 0.25rem 0 0;
+}
+
+.embed-invalid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: rgba(250, 246, 239, 0.7);
+  font-size: 0.95rem;
+}
+
 .embed-placeholder {
   max-width: 46rem;
   margin: 2rem auto 0;

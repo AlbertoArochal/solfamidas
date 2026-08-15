@@ -45,7 +45,7 @@ import site from "../data/site.json";
     event.preventDefault();
     const data = new FormData(form);
     const email = form.dataset.email ?? "";
-    const subject = encodeURIComponent("Consulta desde la web — Dúo Harmonie");
+    const subject = encodeURIComponent("Consulta desde la web — Musiketics");
     const body = encodeURIComponent(
       `${data.get("name")} (${data.get("email")})\n\n${data.get("message")}`,
     );
